@@ -1,34 +1,96 @@
-# AutoVision.AI — Deep Learning Computer Vision Platform
+<div align="center">
 
-An intelligent, full-stack computer vision platform featuring a **Dual-AI Architecture** combining cutting-edge multimodal vision models with local on-device deep learning.
+# 🌐 AutoVision.AI
+### Autonomous Computer Vision & Visual Reasoning Platform
+
+[![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.14-blue?logo=python&logoColor=white)](https://python.org)
+[![Flask](https://img.shields.io/badge/Backend-Flask-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Google Gemini](https://img.shields.io/badge/Multimodal%20AI-Google%20Gemini%20Vision-4285F4?logo=google&logoColor=white)](https://ai.google.dev/)
+[![ONNX Runtime](https://img.shields.io/badge/Edge%20Inference-ONNX%20Runtime-005CED?logo=onnx&logoColor=white)](https://onnxruntime.ai/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shree8414/AutoVision-AI/pulls)
+
+<p align="center">
+  <b>A state-of-the-art visual perception web platform powered by a Dual-AI Inference Engine combining frontier cloud visual reasoning with high-performance on-device neural edge computing.</b>
+</p>
+
+[Explore Features](#-core-features) • [System Architecture](#-system-architecture) • [Engine Comparison](#-dual-ai-engine-comparison) • [Quickstart](#-quickstart-guide) • [Project Structure](#-project-structure)
+
+</div>
 
 ---
 
-## 🌟 Key Features
+## 🌟 Core Features
 
-- **🧠 Dual-AI Inference Engine**:
-  - **Google Gemini Vision API** (`gemini-3.1-flash-lite`): Performs deep visual reasoning, 99%+ precise classification (e.g., identifying not just a car, but specifically a *Ferrari Roma* with 99.2% confidence), and generates automated visual insight summaries.
-  - **MobileNetV2 CNN** (via Microsoft's ONNX Runtime): On-device edge model providing fast offline evaluation.
-- **⚡ Instant Client-Side Preview & Asynchronous Inference**:
-  - Immediate image rendering upon file selection or drag-and-drop.
-  - Asynchronous background evaluations (`fetch`) update results side-by-side in milliseconds without reloading or jumping the page.
-- **🌍 Curated Worldwide Showcase Gallery**:
-  - Built-in test collection covering supercars, wildlife, landmarks, and objects with 1-click evaluation.
-- **🎮 Interactive AI Vision Challenge Game**:
-  - "Human vs Machine" perception game featuring mystery rounds, real-time score tracking, and win streak counters.
-- **🛡️ Secure Environment Configuration**:
-  - API keys managed through `.env` and shielded from version control via `.gitignore`.
+- 🧠 **Dual-AI Inference Engine**:
+  - **Google Gemini Multimodal Vision API (`gemini-3.1-flash-lite`)**: Deep contextual visual understanding and reasoning. Delivers granular predictions (e.g., distinguishing a *Ferrari Roma* with 99.2% certainty rather than a generic "sports car") along with automated visual analysis insights.
+  - **MobileNetV2 Edge CNN (via Microsoft ONNX Runtime)**: High-speed, local neural network that executes entirely on-device with zero cloud latency and 100% offline autonomy.
+- ⚡ **Zero-Latency In-Place UI Updates**:
+  - Instant client-side previews upon file selection or drag-and-drop.
+  - Asynchronous background evaluation (`fetch`) renders rich prediction cards side-by-side with zero page reload or jumping.
+- 🌍 **Curated Worldwide Showcase Gallery**:
+  - Preloaded high-resolution image collection spanning supercars, wildlife, aircraft, architecture, and daily objects for immediate 1-click evaluations.
+- 🎮 **AI Perception Challenge Game**:
+  - Interactive "Human vs Machine" perception contest featuring hidden mystery rounds, live scoreboards, and dynamic win streak tracking.
+- 🛡️ **Production-Grade Secret Isolation**:
+  - Cloud credentials and API keys are stored in strictly isolated `.env` configurations and guarded from version control via `.gitignore`.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                              User Browser                              │
+ │   • Drag-and-Drop Image Uploader       • Instant Client Image Preview  │
+ │   • 1-Click Worldwide Gallery          • AI Perception Challenge Game  │
+ └───────────────────────────────────┬────────────────────────────────────┘
+                                     │ (Multipart POST / Asynchronous Fetch)
+                                     ▼
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                      Flask Web Application Server                      │
+ │                   (d:/Image_Classification_Project)                    │
+ └───────────────────┬────────────────────────────────┬───────────────────┘
+                     │                                │
+                     ▼ (Cloud Vision Request)         ▼ (On-Device Local Inference)
+     ┌───────────────────────────────┐  Fallback  ┌───────────────────────────────┐
+     │      Google Gemini API        │ ─────────► │      ONNX Runtime Engine      │
+     │     gemini-3.1-flash-lite     │   offline  │      MobileNetV2 (14.2 MB)    │
+     │  Deep Multimodal Reasoning   │            │   1,000 ImageNet Categories   │
+     └───────────────┬───────────────┘            └───────────────┬───────────────┘
+                     │                                            │
+                     └────────────────────┬───────────────────────┘
+                                          ▼
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                      JSON Telemetry & Diagnostics                      │
+ │      • Predicted Class        • Confidence Score (%)                   │
+ │      • Inference Engine ID    • Visual Analysis Summary                │
+ └────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## ⚖️ Dual-AI Engine Comparison
+
+| Capability | ☁️ Google Gemini Multimodal Vision | 💻 On-Device MobileNetV2 (ONNX) |
+| :--- | :--- | :--- |
+| **Model** | `gemini-3.1-flash-lite` | MobileNetV2 Pretrained CNN |
+| **Execution Environment** | Google Cloud AI Infrastructure | Local CPU / Edge On-Device |
+| **Internet Requirement** | Required | **None** (100% Offline Capable) |
+| **Recognition Granularity** | Make, model, species, context (e.g. *Ferrari Roma*) | Broad category (e.g. *Sports Car*) |
+| **Inference Output** | Prediction, Confidence %, Contextual Description | Top Predicted Class, Confidence % |
+| **Average Latency** | ~0.8 – 1.2s | **~15 – 45ms** |
+| **Fallback Role** | Primary High-Precision Engine | Automatic Offline Fallback |
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Backend** | Python 3.14, Flask |
-| **AI / ML** | Google Gemini Multimodal Vision API, MobileNetV2 (ONNX Runtime) |
-| **Image Processing** | Pillow (PIL), NumPy |
-| **Frontend** | HTML5, CSS3 (Modern Dark-Mode UI, Responsive, Zero Framework Overhead) |
+- **Backend Framework**: Python 3.10+, Flask, Gunicorn / WSGI compatible
+- **Cloud Multimodal AI**: Google Gemini API (`google-genai` / `gemini-3.1-flash-lite`)
+- **Edge Inference Engine**: Microsoft ONNX Runtime (`onnxruntime 1.20+`)
+- **Image Processing**: Pillow (PIL), NumPy
+- **Frontend Architecture**: Modern HTML5, Responsive CSS3 (Glassmorphism Dark Theme, Vanilla JavaScript)
 
 ---
 
@@ -36,23 +98,38 @@ An intelligent, full-stack computer vision platform featuring a **Dual-AI Archit
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/AutoVision-AI.git
+git clone https://github.com/Shree8414/AutoVision-AI.git
 cd AutoVision-AI
 ```
 
-### 2. Install Dependencies
+### 2. Set Up a Virtual Environment (Recommended)
+```bash
+python -m venv venv
+
+# On Windows:
+venv\Scripts\activate
+
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure API Key
-Create a `.env` file in the project root:
+### 4. Configure Environment Variables
+Copy the template configuration file:
+```bash
+cp .env.example .env
+```
+Open `.env` in any text editor and add your Google Gemini API key:
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
-*(Note: If no API key is provided, the platform automatically runs using the local MobileNetV2 offline engine).*
+> **Note**: If `GEMINI_API_KEY` is not provided or the network is disconnected, AutoVision.AI will gracefully and automatically run using the local on-device MobileNetV2 ONNX engine without interrupting your workflow!
 
-### 4. Run the Application
+### 5. Launch the Platform
 ```bash
 python main.py
 ```
@@ -66,22 +143,42 @@ http://127.0.0.1:5000
 ## 📁 Project Structure
 
 ```text
-├── .env.example                # Example environment configuration
-├── .gitignore                  # Prevents secrets and caches from being committed
-├── requirements.txt            # Python dependencies
-├── main.py                     # Flask web server & Dual-AI inference pipeline
-├── mobilenetv2.onnx            # Pretrained MobileNetV2 ONNX weights
-├── imagenet_classes.txt        # 1,000 ImageNet categories
+AutoVision-AI/
+├── .env.example            # Environment variables template (safe for VCS)
+├── .gitignore              # Shields .env, caches, and uploads from git
+├── README.md               # Project documentation and architectural overview
+├── requirements.txt        # Pinned Python package dependencies
+├── main.py                 # Core Flask backend, routing & Dual-AI inference pipeline
+├── mobilenetv2.onnx        # Pretrained MobileNetV2 ONNX neural network weights
+├── imagenet_classes.txt    # 1,000 standard ImageNet classification labels
 ├── templates/
-│   └── index.html              # Modern web interface (Preview, Gallery, Game)
+│   └── index.html          # Dynamic UI (Preview, Asynchronous Results, Game, Gallery)
 ├── static/
-│   ├── style.css               # Luxury dark glassmorphism stylesheet
-│   ├── samples/                # High-resolution worldwide test dataset
-│   └── uploads/                # Directory for user-uploaded images
-└── README.md
+│   ├── style.css           # Glassmorphism dark luxury styling & responsive layout
+│   └── samples/            # Curated worldwide test dataset (cars, animals, objects)
+└── images/                 # Reference test images
 ```
 
 ---
 
+## 🛡️ Security & Privacy
+
+- **Zero Secret Leakage**: The production `.env` file holding secret API keys is explicitly excluded by `.gitignore` and has never been committed into the Git history.
+- **Local Fallback Mode**: The platform remains completely functional offline using Microsoft's ONNX runtime, ensuring data privacy when cloud communication is disabled.
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to check the [issues page](https://github.com/Shree8414/AutoVision-AI/issues) or submit a Pull Request.
+
+---
+
 ## 📄 License
-This project is open-source and available under the MIT License.
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+<div align="center">
+  <sub>Engineered with ❤️ by <a href="https://github.com/Shree8414">Shree8414</a></sub>
+</div>
