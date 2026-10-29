@@ -1,0 +1,22 @@
+# Environment variables and API secrets
+.env
+.env.local
+.env.*.local
+
+# Python cache & virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Uploaded test images
+static/uploads/*
+!static/uploads/.gitkeep
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

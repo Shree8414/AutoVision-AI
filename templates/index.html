@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoVision AI | Intelligent Image Classification & Vision Game</title>
+    <!-- Google Fonts Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand-logo">
+                <svg class="brand-svg-logo" width="38" height="38" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Glassmorphic Rounded Badge -->
+                    <rect width="36" height="36" rx="9" fill="url(#logo-bg)" stroke="url(#logo-border)" stroke-width="1.2"/>
+                    
+                    <!-- AI Viewfinder Bounding Brackets (Computer Vision) -->
+                    <path d="M7 12V8C7 7.4 7.4 7 8 7H12" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M29 12V8C29 7.4 28.6 7 28 7H24" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M7 24V28C7 28.6 7.4 29 8 29H12" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M29 24V28C29 28.6 28.6 29 28 29H24" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    
+                    <!-- Optical Lens & Iris Geometry -->
+                    <circle cx="18" cy="18" r="7.5" stroke="url(#lens-ring)" stroke-width="1.5"/>
+                    <path d="M18 11.5C21.6 11.5 24.5 14.4 24.5 18H18V11.5Z" fill="url(#blade-gold)" opacity="0.85"/>
+                    <path d="M18 24.5C14.4 24.5 11.5 21.6 11.5 18H18V24.5Z" fill="url(#blade-cyan)" opacity="0.75"/>
+                    
+                    <!-- High-Precision Focal Iris -->
+                    <circle cx="18" cy="18" r="2.8" fill="#ffffff"/>
+                    <circle cx="18" cy="18" r="1.3" fill="#f59e0b"/>
+                    
+                    <!-- Gradients -->
+                    <defs>
+                        <linearGradient id="logo-bg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1e293b"/>
+                            <stop offset="1" stop-color="#0b1120"/>
+                        </linearGradient>
+                        <linearGradient id="logo-border" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#f59e0b" stop-opacity="0.6"/>
+                            <stop offset="1" stop-color="#38bdf8" stop-opacity="0.3"/>
+                        </linearGradient>
+                        <linearGradient id="lens-ring" x1="10" y1="10" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#f59e0b"/>
+                            <stop offset="1" stop-color="#38bdf8"/>
+                        </linearGradient>
+                        <linearGradient id="blade-gold" x1="18" y1="11.5" x2="24.5" y2="18" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fbbf24"/>
+                            <stop offset="1" stop-color="#d97706"/>
+                        </linearGradient>
+                        <linearGradient id="blade-cyan" x1="11.5" y1="18" x2="18" y2="24.5" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#38bdf8"/>
+                            <stop offset="1" stop-color="#6366f1"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">AutoVision<span class="logo-accent">.AI</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#classifier" class="nav-link active">⚡ Classifier</a>
+                <a href="#gallery" class="nav-link">🌍 World Gallery</a>
+                <a href="#game" class="nav-link">🎮 Start Game</a>
+                <a href="#architecture" class="nav-link">🧠 Architecture</a>
+            </nav>
+
+            <div class="nav-badge">
+                <span class="badge-dot"></span>
+                <span>CodeOrbit Internship Task 3</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-pill">
+                <span class="pill-spark">⚡</span> PRETRAINED DEEP LEARNING &bull; MOBILENETV2
+            </div>
+            <h1 class="hero-title">
+                Intelligent Image Classification <br>
+                <span class="gradient-text">&amp; Vision Perception Game</span>
+            </h1>
+            <p class="hero-desc">
+                Experience real-time neural network inference powered by Google's MobileNetV2. 
+                Upload any photo from your computer, test curated world-class samples, or challenge the AI in our interactive Vision Game.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#classifier" class="btn btn-primary">⚡ Try Image Classifier</a>
+                <a href="#game" class="btn btn-outline">🎮 Start AI Game</a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-num">1,000</span>
+                    <span class="stat-label">ImageNet Categories</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">&lt; 35ms</span>
+                    <span class="stat-label">Inference Latency</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">1.4M+</span>
+                    <span class="stat-label">Trained Images</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">Top-5</span>
+                    <span class="stat-label">Ranked Probabilities</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CLASSIFIER SECTION ================= -->
+    <section class="section-container" id="classifier">
+        <div class="section-header">
+            <span class="section-tag">AI INFERENCE ENGINE</span>
+            <h2 class="section-heading">Upload &amp; Classify Image</h2>
+            <p class="section-sub">Select an image to see an immediate preview, then let MobileNetV2 predict the object category in milliseconds.</p>
+        </div>
+
+        {% if error %}
+        <div class="alert alert-error">
+            <strong>⚠️ Error:</strong> {{ error }}
+        </div>
+        {% endif %}
+
+        <div class="classifier-layout">
+            <!-- Left: Upload Zone -->
+            <div class="card upload-card">
+                <h3 class="card-title">📸 Image Upload</h3>
+                <p class="card-subtitle">Choose a file from your PC or drop it here.</p>
+
+                <form action="/predict" method="POST" enctype="multipart/form-data" id="uploadForm">
+                    <div class="drop-zone" id="dropZone">
+                        <input type="file" name="file" id="fileInput" accept="image/*" class="file-input-hidden">
+                        
+                        <!-- Initial Placeholder -->
+                        <div class="drop-placeholder" id="dropPlaceholder">
+                            <div class="upload-icon-circle">📁</div>
+                            <h4 class="drop-text">Click to browse or drag &amp; drop</h4>
+                            <p class="drop-hint">Supports JPG, PNG, WEBP, JPEG</p>
+                        </div>
+
+                        <!-- Instant Preview (Shown immediately when file is selected) -->
+                        <div class="instant-preview-box" id="instantPreviewBox" style="display: none;">
+                            <img id="instantPreviewImg" src="" alt="Selected Preview" class="instant-preview-image">
+                            <div class="preview-info-row">
+                                <span id="previewFileName" class="preview-filename">image.jpg</span>
+                                <button type="button" id="removeFileBtn" class="btn-remove">✕ Clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-classify" id="classifyBtn">
+                        <span>⚡ Classify Image Now</span>
+                    </button>
+                </form>
+
+                <!-- Quick Sample Selector directly below upload option -->
+                <div class="quick-samples-box">
+                    <span class="quick-samples-label">💡 Or test with a sample image below (No upload needed):</span>
+                    <div class="quick-samples-grid">
+                        <button type="button" class="quick-sample-chip" data-file="ferrari.jpg" data-name="Ferrari F8">
+                            <img src="/static/samples/ferrari.jpg" alt="Ferrari">
+                            <span>🏎️ Ferrari</span>
+                        </button>
+                        <button type="button" class="quick-sample-chip" data-file="lion.jpg" data-name="African Lion">
+                            <img src="/static/samples/lion.jpg" alt="Lion">
+                            <span>🦁 Lion</span>
+                        </button>
+                        <button type="button" class="quick-sample-chip" data-file="golden_retriever.jpg" data-name="Golden Retriever">
+                            <img src="/static/samples/golden_retriever.jpg" alt="Dog">
+                            <span>🐶 Dog</span>
+                        </button>
+                        <button type="button" class="quick-sample-chip" data-file="airliner.jpg" data-name="Jetliner">
+                            <img src="/static/samples/airliner.jpg" alt="Airliner">
+                            <span>✈️ Plane</span>
+                        </button>
+                        <button type="button" class="quick-sample-chip" data-file="pizza.jpg" data-name="Pizza">
+                            <img src="/static/samples/pizza.jpg" alt="Pizza">
+                            <span>🍕 Pizza</span>
+                        </button>
+                        <button type="button" class="quick-sample-chip" data-file="guitar.jpg" data-name="Acoustic Guitar">
+                            <img src="/static/samples/guitar.jpg" alt="Guitar">
+                            <span>🎸 Guitar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Results Card -->
+            <div class="card result-card">
+                <h3 class="card-title">🎯 Classification Output</h3>
+                <p class="card-subtitle">Predicted class and probability distributions.</p>
+
+                <div id="resultCardContent">
+                {% if result %}
+                <div class="result-body">
+                    <!-- Source Image Preview -->
+                    <div class="result-image-wrapper">
+                        <img src="{{ image_url }}" alt="Classified Image" class="result-display-img">
+                        <div class="image-source-badge">{{ source_name }}</div>
+                    </div>
+
+                    <!-- Top Prediction Showcase -->
+                    <div class="top-prediction-banner">
+                        <div class="top-pred-header">
+                            <span class="banner-title">TOP PREDICTION</span>
+                            <span class="badge {{ result.confidence_badge_class }}">{{ result.confidence_grade }}</span>
+                        </div>
+                        <div class="top-pred-name">{{ result.top_label }}</div>
+                        <div class="top-pred-score">
+                            <span class="score-number">{{ result.top_confidence }}%</span>
+                            <span class="score-text">Probability &bull; Latency: {{ result.latency_ms }}ms</span>
+                        </div>
+                    </div>
+
+                    <!-- Top-5 Probability Breakdown Bars -->
+                    <h4 class="breakdown-heading">Top 5 Candidate Distribution</h4>
+                    <div class="probabilities-list">
+                        {% for item in result.all_predictions %}
+                        <div class="prob-row">
+                            <div class="prob-labels">
+                                <span class="prob-name">{{ loop.index }}. {{ item.label }}</span>
+                                <span class="prob-percent">{{ item.confidence }}%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: {{ item.confidence }}%;"></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="result-empty-state">
+                    <div class="empty-icon">🖼️</div>
+                    <h4>No Image Classified Yet</h4>
+                    <p>Select an image above or click any sample in the <strong>Worldwide Showcase Gallery</strong> below for 1-click classification.</p>
+                </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WORLD SHOWCASE GALLERY ================= -->
+    <section class="section-container" id="gallery">
+        <div class="section-header">
+            <span class="section-tag">GLOBAL TEST BENCHMARK</span>
+            <h2 class="section-heading">Worldwide Showcase Gallery</h2>
+            <p class="section-sub">Curated high-resolution images from around the world. Click <strong>"Quick Classify"</strong> to test any image instantly with zero setup!</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All Images ({{ gallery|length }})</button>
+            <button class="filter-btn" data-filter="supercar">🏎️ Supercars</button>
+            <button class="filter-btn" data-filter="wildlife">🦁 Wildlife</button>
+            <button class="filter-btn" data-filter="aviation">✈️ Aviation &amp; Places</button>
+            <button class="filter-btn" data-filter="objects">🍕 Food &amp; Objects</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            {% for item in gallery %}
+            <div class="gallery-card" data-category="{{ item.category }}">
+                <div class="card-img-wrap">
+                    <img src="/static/samples/{{ item.file }}" alt="{{ item.title }}" class="gallery-card-img" loading="lazy">
+                    <span class="category-pill">{{ item.category_name }}</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-heading">{{ item.title }}</h4>
+                    <p class="card-desc">{{ item.description }}</p>
+                    <div class="card-footer">
+                        <span class="expected-badge">Class: <strong>{{ item.expected }}</strong></span>
+                        <form action="/predict#classifier" method="POST" class="quick-form">
+                            <input type="hidden" name="sample_file" value="{{ item.file }}">
+                            <button type="submit" class="btn-quick-classify">⚡ Quick Classify</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- ================= START GAME: AI VISION CHALLENGE ================= -->
+    <section class="section-container" id="game">
+        <div class="section-header">
+            <span class="section-tag">INTERACTIVE GAMEPLAY</span>
+            <h2 class="section-heading">🎮 AI Vision Game: Can You Beat The Machine?</h2>
+            <p class="section-sub">Test your visual perception against MobileNetV2! Guess the mystery object, submit your answer, and see who scores higher.</p>
+        </div>
+
+        <div class="game-wrapper">
+            <!-- Scoreboard -->
+            <div class="game-scoreboard">
+                <div class="score-item">
+                    <span class="score-title">Your Score</span>
+                    <span class="score-val" id="playerScore">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-title">Rounds Played</span>
+                    <span class="score-val" id="roundsPlayed">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-title">Current Streak</span>
+                    <span class="score-val" id="currentStreak">🔥 0</span>
+                </div>
+            </div>
+
+            <!-- Game Arena -->
+            <div class="game-arena card">
+                <!-- Start Game Overlay / Initial View -->
+                <div id="gameStartView" class="game-initial-view">
+                    <div class="game-icon-large">🎮</div>
+                    <h3>Ready for the Vision Challenge?</h3>
+                    <p>A mystery image from around the globe will appear. Choose the correct category before MobileNetV2 reveals its prediction!</p>
+                    <button type="button" class="btn btn-primary btn-start-game" id="startGameBtn">🚀 Start Game Now</button>
+                </div>
+
+                <!-- Active Game Round -->
+                <div id="gamePlayView" style="display: none;">
+                    <div class="game-round-layout">
+                        <!-- Mystery Image -->
+                        <div class="game-image-box">
+                            <img id="gameMysteryImg" src="" alt="Mystery Object" class="game-img">
+                            <div class="mystery-tag">Mystery Sample</div>
+                        </div>
+
+                        <!-- Question & Choices -->
+                        <div class="game-control-box">
+                            <h4 class="game-prompt">What object is shown in this image?</h4>
+                            <div class="game-options-grid" id="gameOptionsContainer">
+                                <!-- Choices populated dynamically -->
+                            </div>
+
+                            <button type="button" class="btn btn-classify" id="submitGuessBtn" disabled>
+                                <span>🎯 Confirm &amp; Submit Guess</span>
+                            </button>
+
+                            <!-- Round Outcome Banner -->
+                            <div id="gameOutcomeBanner" class="game-outcome" style="display: none;">
+                                <div id="outcomeTitle" class="outcome-title"></div>
+                                <div id="aiOutcomeText" class="outcome-ai-text"></div>
+                                <button type="button" class="btn btn-outline" id="nextRoundBtn">🔄 Next Round</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ARCHITECTURE & METRICS ================= -->
+    <section class="section-container" id="architecture">
+        <div class="section-header">
+            <span class="section-tag">DEEP LEARNING ARCHITECTURE</span>
+            <h2 class="section-heading">Under The Hood: MobileNetV2</h2>
+            <p class="section-sub">Engineered by Google for high-efficiency mobile and edge vision without sacrificing accuracy.</p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon">🔬</div>
+                <h3>Depthwise Separable Convolutions</h3>
+                <p>Splits traditional convolution into spatial filtering and depthwise linear combination, reducing computational parameters by <strong>over 80%</strong>.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">🔄</div>
+                <h3>Inverted Residual Bottlenecks</h3>
+                <p>Employs lightweight thin bottlenecks connecting low-dimensional representations, preventing non-linearities from destroying critical visual data.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">⚡</div>
+                <h3>ONNX Runtime Engine</h3>
+                <p>High-performance inference engine built by Microsoft. Executes compiled neural graphs natively on CPU with SIMD vectorization.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon">📐</div>
+                <h3>$224 \times 224$ Preprocessing</h3>
+                <p>Normalizes input RGB matrices using standard ImageNet mean vectors `[0.485, 0.456, 0.406]` and std `[0.229, 0.224, 0.225]`.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <svg class="brand-svg-logo" width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="36" height="36" rx="9" fill="url(#logo-bg-foot)" stroke="url(#logo-border-foot)" stroke-width="1.2"/>
+                    <path d="M7 12V8C7 7.4 7.4 7 8 7H12" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M29 12V8C29 7.4 28.6 7 28 7H24" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M7 24V28C7 28.6 7.4 29 8 29H12" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M29 24V28C29 28.6 28.6 29 28 29H24" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="18" cy="18" r="7.5" stroke="url(#lens-ring-foot)" stroke-width="1.5"/>
+                    <path d="M18 11.5C21.6 11.5 24.5 14.4 24.5 18H18V11.5Z" fill="url(#blade-gold-foot)" opacity="0.85"/>
+                    <path d="M18 24.5C14.4 24.5 11.5 21.6 11.5 18H18V24.5Z" fill="url(#blade-cyan-foot)" opacity="0.75"/>
+                    <circle cx="18" cy="18" r="2.8" fill="#ffffff"/>
+                    <circle cx="18" cy="18" r="1.3" fill="#f59e0b"/>
+                    <defs>
+                        <linearGradient id="logo-bg-foot" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1e293b"/>
+                            <stop offset="1" stop-color="#0b1120"/>
+                        </linearGradient>
+                        <linearGradient id="logo-border-foot" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#f59e0b" stop-opacity="0.6"/>
+                            <stop offset="1" stop-color="#38bdf8" stop-opacity="0.3"/>
+                        </linearGradient>
+                        <linearGradient id="lens-ring-foot" x1="10" y1="10" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#f59e0b"/>
+                            <stop offset="1" stop-color="#38bdf8"/>
+                        </linearGradient>
+                        <linearGradient id="blade-gold-foot" x1="18" y1="11.5" x2="24.5" y2="18" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#fbbf24"/>
+                            <stop offset="1" stop-color="#d97706"/>
+                        </linearGradient>
+                        <linearGradient id="blade-cyan-foot" x1="11.5" y1="18" x2="18" y2="24.5" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#38bdf8"/>
+                            <stop offset="1" stop-color="#6366f1"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">AutoVision<span class="logo-accent">.AI</span></span>
+                <p class="footer-sub">CodeOrbit AI Internship Task 3 &bull; Pretrained Image Classification</p>
+            </div>
+            <div class="footer-tech-stack">
+                <span class="tech-badge">Python 3.14</span>
+                <span class="tech-badge">Flask 3.1</span>
+                <span class="tech-badge">MobileNetV2</span>
+                <span class="tech-badge">ONNX Runtime</span>
+                <span class="tech-badge">HTML5 &amp; CSS3</span>
+            </div>
+            <p class="footer-copy">&copy; 2026 CodeOrbit AI Internship. Built with passion &amp; engineering excellence.</p>
+        </div>
+    </footer>
+
+    <!-- ================= VANILLA JAVASCRIPT LOGIC ================= -->
+    <script>
+        // 1. Instant Client-Side Image Preview
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+        const dropPlaceholder = document.getElementById('dropPlaceholder');
+        const instantPreviewBox = document.getElementById('instantPreviewBox');
+        const instantPreviewImg = document.getElementById('instantPreviewImg');
+        const previewFileName = document.getElementById('previewFileName');
+        const removeFileBtn = document.getElementById('removeFileBtn');
+        const classifyBtn = document.getElementById('classifyBtn');
+
+        // File Selection Listener
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    instantPreviewImg.src = event.target.result;
+                    previewFileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+                    dropPlaceholder.style.display = 'none';
+                    instantPreviewBox.style.display = 'block';
+                    classifyBtn.classList.add('pulse-active');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Clear Selection
+        removeFileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            fileInput.value = '';
+            instantPreviewImg.src = '';
+            dropPlaceholder.style.display = 'block';
+            instantPreviewBox.style.display = 'none';
+            classifyBtn.classList.remove('pulse-active');
+        });
+
+        // Drag & Drop effects
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                fileInput.dispatchEvent(event);
+            }
+        });
+
+        // Helper to dynamically render results without page reload
+        function renderResult(data) {
+            const resultBox = document.getElementById('resultCardContent');
+            const res = data.result;
+            
+            let probRows = '';
+            res.all_predictions.forEach((item, index) => {
+                probRows += `
+                    <div class="prob-row">
+                        <div class="prob-labels">
+                            <span class="prob-name">${index + 1}. ${item.label}</span>
+                            <span class="prob-percent">${item.confidence}%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: ${item.confidence}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultBox.innerHTML = `
+                <div class="result-body">
+                    <div class="result-image-wrapper">
+                        <img src="${data.image_url}" alt="Classified Image" class="result-display-img">
+                        <div class="image-source-badge">${data.source_name}</div>
+                    </div>
+
+                    <div class="top-prediction-banner">
+                        <div class="top-pred-header">
+                            <span class="banner-title">${res.ai_engine || 'TOP PREDICTION'}</span>
+                            <span class="badge ${res.confidence_badge_class}">${res.confidence_grade}</span>
+                        </div>
+                        <div class="top-pred-name">${res.top_label}</div>
+                        <div class="top-pred-score">
+                            <span class="score-number">${res.top_confidence}%</span>
+                            <span class="score-text">Confidence &bull; Latency: ${res.latency_ms}ms</span>
+                        </div>
+                        ${res.ai_insight ? `<div class="ai-insight-box">💡 <strong>AI Insight:</strong> ${res.ai_insight}</div>` : ''}
+                    </div>
+
+                    <h4 class="breakdown-heading">Top 5 Candidate Distribution</h4>
+                    <div class="probabilities-list">
+                        ${probRows}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Form Submit Handler (No Page Reload / No Jumping)
+        const uploadForm = document.getElementById('uploadForm');
+        uploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert("Please choose an image file first or click one of the samples below!");
+                return;
+            }
+
+            const resultBox = document.getElementById('resultCardContent');
+            resultBox.innerHTML = `
+                <div class="result-loading-state">
+                    <div class="analyzing-spinner"></div>
+                    <h4>🧠 MobileNetV2 is Analyzing Image...</h4>
+                    <p>Preprocessing pixels & computing neural activations in real time...</p>
+                </div>
+            `;
+
+            const formData = new FormData(uploadForm);
+            fetch('/predict', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    renderResult(data);
+                } else {
+                    resultBox.innerHTML = `<div class="alert alert-error">${data.error || 'Prediction failed'}</div>`;
+                }
+            })
+            .catch(err => {
+                resultBox.innerHTML = `<div class="alert alert-error">Error: ${err.message}</div>`;
+            });
+        });
+
+        // Quick Sample Chips directly under upload box
+        const sampleChips = document.querySelectorAll('.quick-sample-chip');
+        sampleChips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                const file = this.getAttribute('data-file');
+                const name = this.getAttribute('data-name');
+
+                // Instant preview in drop zone
+                instantPreviewImg.src = '/static/samples/' + file;
+                previewFileName.textContent = name + ' (Sample)';
+                dropPlaceholder.style.display = 'none';
+                instantPreviewBox.style.display = 'block';
+
+                const resultBox = document.getElementById('resultCardContent');
+                resultBox.innerHTML = `
+                    <div class="result-loading-state">
+                        <div class="analyzing-spinner"></div>
+                        <h4>🧠 MobileNetV2 is Analyzing Image...</h4>
+                        <p>Classifying ${name} with pretrained weights...</p>
+                    </div>
+                `;
+
+                const formData = new FormData();
+                formData.append('sample_file', file);
+
+                fetch('/predict', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        renderResult(data);
+                    }
+                })
+                .catch(err => {
+                    resultBox.innerHTML = `<div class="alert alert-error">${err.message}</div>`;
+                });
+            });
+        });
+
+        // Quick Classify Buttons in World Gallery
+        document.querySelectorAll('.quick-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const sampleFile = this.querySelector('input[name="sample_file"]').value;
+
+                document.getElementById('classifier').scrollIntoView({ behavior: 'smooth' });
+
+                instantPreviewImg.src = '/static/samples/' + sampleFile;
+                previewFileName.textContent = sampleFile.replace('_', ' ').replace('.jpg', '').toUpperCase() + ' (Gallery Sample)';
+                dropPlaceholder.style.display = 'none';
+                instantPreviewBox.style.display = 'block';
+
+                const resultBox = document.getElementById('resultCardContent');
+                resultBox.innerHTML = `
+                    <div class="result-loading-state">
+                        <div class="analyzing-spinner"></div>
+                        <h4>🧠 MobileNetV2 is Analyzing Image...</h4>
+                        <p>Computing ImageNet probabilities...</p>
+                    </div>
+                `;
+
+                const formData = new FormData();
+                formData.append('sample_file', sampleFile);
+
+                fetch('/predict', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        renderResult(data);
+                    }
+                });
+            });
+        });
+
+        // 2. Gallery Category Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.getAttribute('data-filter');
+
+                galleryCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 3. AI Vision Game Engine
+        let currentGameRound = null;
+        let selectedPlayerChoice = null;
+        let score = 0;
+        let rounds = 0;
+        let streak = 0;
+
+        const startGameBtn = document.getElementById('startGameBtn');
+        const gameStartView = document.getElementById('gameStartView');
+        const gamePlayView = document.getElementById('gamePlayView');
+        const gameMysteryImg = document.getElementById('gameMysteryImg');
+        const gameOptionsContainer = document.getElementById('gameOptionsContainer');
+        const submitGuessBtn = document.getElementById('submitGuessBtn');
+        const gameOutcomeBanner = document.getElementById('gameOutcomeBanner');
+        const outcomeTitle = document.getElementById('outcomeTitle');
+        const aiOutcomeText = document.getElementById('aiOutcomeText');
+        const nextRoundBtn = document.getElementById('nextRoundBtn');
+        const playerScoreEl = document.getElementById('playerScore');
+        const roundsPlayedEl = document.getElementById('roundsPlayed');
+        const currentStreakEl = document.getElementById('currentStreak');
+
+        startGameBtn.addEventListener('click', () => {
+            gameStartView.style.display = 'none';
+            gamePlayView.style.display = 'block';
+            loadNewGameRound();
+        });
+
+        nextRoundBtn.addEventListener('click', () => {
+            loadNewGameRound();
+        });
+
+        function loadNewGameRound() {
+            selectedPlayerChoice = null;
+            submitGuessBtn.disabled = true;
+            gameOutcomeBanner.style.display = 'none';
+            gameOptionsContainer.innerHTML = '<div class="loading-spinner">Loading mystery round...</div>';
+
+            fetch('/game-data')
+                .then(res => res.json())
+                .then(data => {
+                    currentGameRound = data;
+                    gameMysteryImg.src = data.image_url;
+                    renderGameChoices(data.choices);
+                })
+                .catch(err => {
+                    console.error("Game load error:", err);
+                    gameOptionsContainer.innerHTML = 'Error loading round. Please try again.';
+                });
+        }
+
+        function renderGameChoices(choices) {
+            gameOptionsContainer.innerHTML = '';
+            choices.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'choice-btn';
+                btn.textContent = choice;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    selectedPlayerChoice = choice;
+                    submitGuessBtn.disabled = false;
+                });
+                gameOptionsContainer.appendChild(btn);
+            });
+        }
+
+        submitGuessBtn.addEventListener('click', () => {
+            if (!selectedPlayerChoice || !currentGameRound) return;
+            submitGuessBtn.disabled = true;
+
+            // Call verify API
+            fetch('/game-verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sample_file: currentGameRound.sample_file,
+                    player_guess: selectedPlayerChoice
+                })
+            })
+            .then(res => res.json())
+            .then(res => {
+                rounds++;
+                const isCorrect = (selectedPlayerChoice.toLowerCase() === currentGameRound.correct_label.toLowerCase());
+
+                if (isCorrect) {
+                    score += 10;
+                    streak++;
+                    outcomeTitle.innerHTML = '🎉 <strong>CORRECT! (+10 Points)</strong>';
+                    outcomeTitle.className = 'outcome-title success';
+                } else {
+                    streak = 0;
+                    outcomeTitle.innerHTML = `❌ <strong>Not quite!</strong> Correct answer: <u>${currentGameRound.correct_label}</u>`;
+                    outcomeTitle.className = 'outcome-title error';
+                }
+
+                aiOutcomeText.innerHTML = `🧠 <strong>MobileNetV2:</strong> Predicted <strong>${res.ai_top_label}</strong> with <strong>${res.ai_confidence}%</strong> confidence in ${res.latency_ms}ms.`;
+                
+                // Highlight options
+                document.querySelectorAll('.choice-btn').forEach(b => {
+                    b.disabled = true;
+                    if (b.textContent.toLowerCase() === currentGameRound.correct_label.toLowerCase()) {
+                        b.classList.add('btn-correct');
+                    } else if (b.classList.contains('selected') && !isCorrect) {
+                        b.classList.add('btn-wrong');
+                    }
+                });
+
+                // Update scoreboard
+                playerScoreEl.textContent = score;
+                roundsPlayedEl.textContent = rounds;
+                currentStreakEl.textContent = '🔥 ' + streak;
+
+                gameOutcomeBanner.style.display = 'block';
+            })
+            .catch(err => {
+                console.error("Verification error:", err);
+            });
+        });
+    </script>
+</body>
+</html>
